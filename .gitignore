@@ -1,0 +1,6 @@
+node_modules/
+database/flashgrocer.db
+database/*.db
+.env
+*.log
+npm-debug.log*

@@ -1,0 +1,9 @@
+{
+  "watch": ["server.js", "routes/", "middleware/", "database/db.js", ".env"],
+  "ext": "js,json",
+  "ignore": ["node_modules/", "database/*.db", "*.test.js"],
+  "delay": "300",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

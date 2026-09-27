@@ -1,0 +1,40 @@
+{
+  "name": "flash-grocer",
+  "version": "1.0.0",
+  "description": "FlashGrocer – Q-Commerce Platform with Node.js Backend, SQLite Database, and JWT Authentication",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node database/db.js",
+    "seed:admin": "node database/seed-admin.js",
+    "setup": "npm install && node database/seed-admin.js"
+  },
+  "keywords": [
+    "qcommerce",
+    "grocery",
+    "nodejs",
+    "mongodb",
+    "jwt"
+  ],
+  "author": "FlashGrocer Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.22.1",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "markdown-pdf": "^11.0.0",
+    "md-to-pdf": "^5.2.5",
+    "mongoose": "^9.3.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="FlashGrocer SALE – Up to 50% OFF on 150+ products. Groceries, Food, Biryani, Snacks &amp; more. 10-min delivery across AP &amp; Telangana. flashgrocer.in"/>
+  <link rel="canonical" href="http://flashgrocer.in/sale" />
+  <meta property="og:site_name" content="FlashGrocer" />
+  <meta property="og:url" content="http://flashgrocer.in/sale" />
+  <title>FlashGrocer SALE ⚡ – Up to 50% OFF | flashgrocer.in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#1a0800;--black-2:#220e00;--black-3:#2e1500;--black-4:#3d1e00;
+      --silver:#ffd6a0;--silver-light:#ffe8cc;--silver-dark:#c8895a;
+      --white:#fff;--danger:#e05555;--success:#4caf82;--warning:#ff8c00;
+      --grad-silver:linear-gradient(135deg,#e65c00 0%,#ffa040 35%,#ffd080 55%,#ff8800 75%,#c44d00 100%);
+      --font-main:'Outfit',sans-serif;--font-body:'Inter',sans-serif;
+      --radius-md:12px;--radius-lg:20px;--radius-xl:30px;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--silver-light);font-family:var(--font-body);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:#111}
+    ::-webkit-scrollbar-thumb{background:#555;border-radius:3px}
+
+    /* ── TOPBAR ── */
+    .topbar{background:var(--grad-silver);color:#000;text-align:center;padding:10px 20px;font-size:.85rem;font-weight:600;position:relative}
+    .topbar strong{font-weight:900}
+
+    /* ── HEADER ── */
+    .header{background:rgba(10,10,10,.97);border-bottom:1px solid rgba(192,192,192,.12);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(14px)}
+    .logo-wrap{display:flex;align-items:center;gap:12px}
+    .logo-icon{width:44px;height:44px;background:var(--grad-silver);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+    .logo-text{font-family:var(--font-main);font-size:1.3rem;font-weight:900;color:var(--silver-light)}
+    .logo-text span{background:var(--grad-silver);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-links{display:flex;gap:24px}
+    .nav-links a{font-size:.88rem;color:var(--silver-dark);transition:color .3s}
+    .nav-links a:hover,.nav-links a.active{color:var(--silver-light)}
+    .header-right{display:flex;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-xl);font-family:var(--font-main);font-size:.88rem;font-weight:700;transition:all .3s;cursor:pointer}
+    .btn-silver{background:var(--grad-silver);color:#000;box-shadow:0 4px 16px rgba(192,192,192,.2)}
+    .btn-silver:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(192,192,192,.35)}
+    .btn-outline{border:1.5px solid rgba(192,192,192,.3);color:var(--silver-light)}
+    .btn-outline:hover{border-color:var(--silver);background:rgba(192,192,192,.05)}
+
+    /* ── HERO BANNER ── */
+    .sale-hero{padding:80px 20px 60px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(192,192,192,.07) 0%,transparent 70%);position:relative;overflow:hidden}
+    .sale-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c0c0c0' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+    .sale-badge{display:inline-block;padding:8px 24px;background:linear-gradient(135deg,#e05555,#b03030);border-radius:var(--radius-xl);font-size:.85rem;font-weight:700;color:#fff;margin-bottom:20px;letter-spacing:.5px;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(224,85,85,.4)}50%{box-shadow:0 0 0 12px rgba(224,85,85,0)}}
+    .sale-title{font-family:var(--font-main);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;color:#fff;margin-bottom:16px;line-height:1.1}
+    .sale-title .shine{background:var(--grad-silver);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shine 3s linear infinite}
+    @keyframes shine{0%{background-position:0% center}100%{background-position:200% center}}
+    .sale-sub{color:var(--silver-dark);font-size:1rem;max-width:500px;margin:0 auto 40px}
+    .countdown{display:flex;justify-content:center;gap:16px;margin-bottom:48px}
+    .cd-unit{background:var(--black-3);border:1px solid rgba(192,192,192,.12);border-radius:var(--radius-md);padding:16px 24px;text-align:center;min-width:80px}
+    .cd-num{display:block;font-family:var(--font-main);font-size:2rem;font-weight:900;background:var(--grad-silver);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .cd-lbl{font-size:.7rem;color:var(--silver-dark);text-transform:uppercase;letter-spacing:.8px}
+
+    /* ── OFFER TIERS ── */
+    .offer-tiers{padding:40px 20px;max-width:1280px;margin:0 auto}
+    .tier-title{font-family:var(--font-main);font-size:1.6rem;font-weight:800;color:var(--silver-light);text-align:center;margin-bottom:32px}
+    .tiers-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .tier-card{border-radius:var(--radius-lg);padding:28px 20px;text-align:center;border:1px solid;display:flex;flex-direction:column;gap:8px;transition:transform .3s,box-shadow .3s;cursor:pointer}
+    .tier-card:hover{transform:translateY(-6px)}
+    .tier-card.t1{background:linear-gradient(135deg,rgba(224,85,85,.15),rgba(180,50,50,.05));border-color:rgba(224,85,85,.3)}
+    .tier-card.t2{background:linear-gradient(135deg,rgba(240,165,0,.15),rgba(200,120,0,.05));border-color:rgba(240,165,0,.3)}
+    .tier-card.t3{background:linear-gradient(135deg,rgba(76,175,130,.15),rgba(50,140,100,.05));border-color:rgba(76,175,130,.3)}
+    .tier-card.t4{background:linear-gradient(135deg,rgba(192,192,192,.15),rgba(150,150,150,.05));border-color:rgba(192,192,192,.3)}
+    .tier-pct{font-family:var(--font-main);font-size:2.8rem;font-weight:900}
+    .t1 .tier-pct{color:#e05555}
+    .t2 .tier-pct{color:#f0a500}
+    .t3 .tier-pct{color:#4caf82}
+    .t4 .tier-pct{color:var(--silver)}
+    .tier-off{font-family:var(--font-main);font-size:.95rem;font-weight:700;color:var(--silver-light)}
+    .tier-cond{font-size:.78rem;color:var(--silver-dark)}
+    .tier-code{display:inline-block;padding:4px 12px;border-radius:var(--radius-xl);font-size:.72rem;font-weight:800;letter-spacing:.8px;margin-top:4px}
+    .t1 .tier-code{background:rgba(224,85,85,.2);color:#e05555}
+    .t2 .tier-code{background:rgba(240,165,0,.2);color:#f0a500}
+    .t3 .tier-code{background:rgba(76,175,130,.2);color:#4caf82}
+    .t4 .tier-code{background:rgba(192,192,192,.15);color:var(--silver)}
+
+    /* ── SECTION ── */
+    .container{max-width:1280px;margin:0 auto;padding:0 20px}
+    .section{padding:60px 20px}
+    .section-header{margin-bottom:32px}
+    .section-header h2{font-family:var(--font-main);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:var(--silver-light);margin-bottom:8px}
+    .section-header p{color:var(--silver-dark);font-size:.88rem}
+    .sec-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .view-all{font-size:.83rem;color:var(--silver-dark);text-decoration:underline;transition:color .3s}
+    .view-all:hover{color:var(--silver-light)}
+
+    /* ── PRODUCT GRID ── */
+    .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .prod-card{background:linear-gradient(145deg,#1c1c1c,#111);border:1px solid rgba(192,192,192,.08);border-radius:var(--radius-lg);overflow:hidden;transition:all .3s;position:relative}
+    .prod-card:hover{border-color:rgba(192,192,192,.25);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.7),0 0 0 1px rgba(192,192,192,.1)}
+    .prod-img{height:180px;background:var(--black-3);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+    .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .prod-card:hover .prod-img img{transform:scale(1.08)}
+    .prod-badge{position:absolute;top:10px;left:10px;background:var(--grad-silver);color:#000;font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:var(--radius-xl)}
+    .sale-pct-badge{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,#e05555,#b03030);color:#fff;font-size:.7rem;font-weight:800;padding:4px 10px;border-radius:var(--radius-xl)}
+    .prod-info{padding:14px}
+    .prod-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.8px;color:var(--silver-dark);margin-bottom:4px}
+    .prod-name{font-family:var(--font-main);font-size:.95rem;font-weight:700;color:var(--silver-light);line-height:1.3;margin-bottom:8px}
+    .prod-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+    .prod-price{font-family:var(--font-main);font-size:1.1rem;font-weight:800;background:var(--grad-silver);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .prod-orig{font-size:.8rem;color:var(--silver-dark);text-decoration:line-through}
+    .prod-delivery{font-size:.73rem;color:#4caf82;margin-bottom:10px}
+    .add-btn{width:100%;padding:9px;background:rgba(192,192,192,.08);border:1px solid rgba(192,192,192,.15);border-radius:var(--radius-md);color:var(--silver-light);font-size:.85rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .3s}
+    .add-btn:hover{background:var(--grad-silver);color:#000;border-color:transparent}
+
+    /* ── SALE CATEGORY TABS ── */
+    .cat-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+    .cat-tab{padding:8px 20px;background:var(--black-3);border:1px solid rgba(192,192,192,.12);border-radius:var(--radius-xl);font-size:.82rem;color:var(--silver-dark);cursor:pointer;transition:all .3s}
+    .cat-tab:hover,.cat-tab.active{background:rgba(192,192,192,.12);border-color:var(--silver-dark);color:var(--silver-light)}
+
+    /* ── APP DOWNLOAD ── */
+    .app-section{background:linear-gradient(135deg,var(--black-2),var(--black-3));border:1px solid rgba(192,192,192,.1);border-radius:24px;padding:60px;margin:60px 20px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1280px;margin-left:auto;margin-right:auto}
+    .app-label{display:inline-block;padding:6px 16px;background:rgba(76,175,130,.1);border:1px solid rgba(76,175,130,.2);border-radius:var(--radius-xl);font-size:.75rem;font-weight:700;color:#4caf82;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+    .app-title{font-family:var(--font-main);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.2}
+    .app-sub{color:var(--silver-dark);font-size:.92rem;line-height:1.7;margin-bottom:28px}
+    .app-btns{display:flex;gap:14px;flex-wrap:wrap}
+    .app-store-btn{display:flex;align-items:center;gap:12px;padding:14px 24px;background:var(--black-4);border:1.5px solid rgba(192,192,192,.2);border-radius:var(--radius-md);transition:all .3s;min-width:160px}
+    .app-store-btn:hover{border-color:var(--silver);background:rgba(192,192,192,.06);transform:translateY(-2px)}
+    .store-icon{font-size:1.8rem;flex-shrink:0}
+    .store-text{display:flex;flex-direction:column}
+    .store-top{font-size:.68rem;color:var(--silver-dark)}
+    .store-name{font-family:var(--font-main);font-size:1rem;font-weight:700;color:var(--silver-light)}
+    .app-graphic{display:flex;justify-content:center;flex-direction:column;gap:16px}
+    .phone-mockup{background:var(--black-3);border:2px solid rgba(192,192,192,.15);border-radius:24px;padding:20px;text-align:center;font-size:2.5rem;animation:float 3s ease-in-out infinite;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .districts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .dist-chip{padding:4px 12px;background:rgba(192,192,192,.06);border:1px solid rgba(192,192,192,.1);border-radius:var(--radius-xl);font-size:.72rem;color:var(--silver-dark)}
+
+    /* ── FOOTER ── */
+    .footer{background:var(--black-2);border-top:1px solid rgba(192,192,192,.08);padding:40px 20px 20px;text-align:center}
+    .footer p{color:var(--silver-dark);font-size:.82rem;margin-bottom:8px}
+    .footer a{color:var(--silver-dark);text-decoration:underline;margin:0 8px}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){.prod-grid{grid-template-columns:repeat(3,1fr)}.tiers-row{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.prod-grid{grid-template-columns:repeat(2,1fr)}.app-section{grid-template-columns:1fr}.nav-links{display:none}}
+    @media(max-width:480px){.prod-grid{grid-template-columns:1fr}.tiers-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  ⚡ FLASH SALE IS LIVE! Use code <strong>FLASH10</strong> for extra 10% off &nbsp;|&nbsp; Free delivery on orders above ₹299
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="/" class="logo-wrap">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-text">Flash<span>Grocer</span></div>
+  </a>
+  <nav class="nav-links">
+    <a href="/">Home</a>
+    <a href="/sale.html" class="active">🔥 Sale</a>
+    <a href="/#categories">Categories</a>
+    <a href="/#about">About</a>
+  </nav>
+  <div class="header-right">
+    <a href="/login.html" class="btn btn-outline">Login</a>
+    <a href="/" class="btn btn-silver">🛒 Shop Now</a>
+  </div>
+</header>
+
+<!-- HERO BANNER -->
+<section class="sale-hero">
+  <div class="sale-badge">🔥 MEGA SALE – Limited Time!</div>
+  <h1 class="sale-title">
+    Up to <span class="shine">50% OFF</span><br>
+    on Everything!
+  </h1>
+  <p class="sale-sub">Groceries · Food · Biryani · Drinks · Ice Cream · Snacks — all at jaw-dropping prices. Delivered in under 10 minutes across AP & Telangana.</p>
+  <div class="countdown">
+    <div class="cd-unit"><span class="cd-num" id="cd-h">23</span><span class="cd-lbl">Hours</span></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-m">59</span><span class="cd-lbl">Mins</span></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-s">59</span><span class="cd-lbl">Secs</span></div>
+  </div>
+</section>
+
+<!-- OFFER TIERS -->
+<div class="offer-tiers">
+  <h2 class="tier-title">🎯 Choose Your Savings Tier</h2>
+  <div class="tiers-row">
+    <div class="tier-card t1" onclick="filterBySlab(599)">
+      <div class="tier-pct">50%</div>
+      <div class="tier-off">OFF</div>
+      <div class="tier-cond">On orders above ₹599</div>
+      <span class="tier-code">Code: SALE50</span>
+    </div>
+    <div class="tier-card t2" onclick="filterBySlab(1199)">
+      <div class="tier-pct">₹100</div>
+      <div class="tier-off">FLAT OFF</div>
+      <div class="tier-cond">On orders above ₹1,199</div>
+      <span class="tier-code">Code: FLAT100</span>
+    </div>
+    <div class="tier-card t3" onclick="filterBySlab(1799)">
+      <div class="tier-pct">₹150</div>
+      <div class="tier-off">FLAT OFF</div>
+      <div class="tier-cond">On orders above ₹1,799</div>
+      <span class="tier-code">Code: FLAT150</span>
+    </div>
+    <div class="tier-card t4" onclick="filterBySlab(2299)">
+      <div class="tier-pct">₹200</div>
+      <div class="tier-off">FLAT OFF</div>
+      <div class="tier-cond">On orders above ₹2,299</div>
+      <span class="tier-code">Code: FLASH200</span>
+    </div>
+  </div>
+</div>
+
+<!-- SALE PRODUCTS -->
+<section class="section container">
+  <div class="sec-top">
+    <div class="section-header">
+      <h2>🔥 Today's Best Deals</h2>
+      <p>Hand-picked offers from every category – updated every hour</p>
+    </div>
+    <a href="/" class="view-all">View all products →</a>
+  </div>
+
+  <!-- Category Filter Tabs -->
+  <div class="cat-tabs" id="filterTabs">
+    <span class="cat-tab active" data-cat="all">🛍️ All Deals</span>
+    <span class="cat-tab" data-cat="grocery">🥦 Grocery</span>
+    <span class="cat-tab" data-cat="food">🍕 Food</span>
+    <span class="cat-tab" data-cat="icecream">🍦 Ice Cream</span>
+    <span class="cat-tab" data-cat="drinks">🥤 Drinks</span>
+    <span class="cat-tab" data-cat="snacks">🍿 Snacks</span>
+  </div>
+
+  <div class="prod-grid" id="saleGrid"><!-- JS fills this --></div>
+</section>
+
+<!-- APP DOWNLOAD SECTION -->
+<div class="app-section">
+  <div>
+    <div class="app-label">📱 Now on Mobile</div>
+    <h2 class="app-title">FlashGrocer App<br>for Android & iOS</h2>
+    <p class="app-sub">
+      Download the FlashGrocer app for lightning-fast ordering, real-time tracking, exclusive app-only deals and 10-minute delivery across <strong>all districts of Andhra Pradesh and Telangana</strong>.
+    </p>
+    <div class="app-btns">
+      <a href="#" class="app-store-btn">
+        <span class="store-icon">🤖</span>
+        <div class="store-text">
+          <span class="store-top">GET IT ON</span>
+          <span class="store-name">Google Play</span>
+        </div>
+      </a>
+      <a href="#" class="app-store-btn">
+        <span class="store-icon"></span>
+        <div class="store-text">
+          <span class="store-top">DOWNLOAD ON THE</span>
+          <span class="store-name">App Store</span>
+        </div>
+      </a>
+    </div>
+    <p style="margin-top:20px;font-size:.75rem;color:var(--silver-dark)">▶ Delivery available in:</p>
+    <div class="districts">
+      <span class="dist-chip">Hyderabad</span><span class="dist-chip">Warangal</span>
+      <span class="dist-chip">Nizamabad</span><span class="dist-chip">Karimnagar</span>
+      <span class="dist-chip">Khammam</span><span class="dist-chip">Nalgonda</span>
+      <span class="dist-chip">Visakhapatnam</span><span class="dist-chip">Vijayawada</span>
+      <span class="dist-chip">Guntur</span><span class="dist-chip">Tirupati</span>
+      <span class="dist-chip">Nellore</span><span class="dist-chip">Kurnool</span>
+      <span class="dist-chip">Rajahmundry</span><span class="dist-chip">Kakinada</span>
+      <span class="dist-chip">Eluru</span><span class="dist-chip">Ongole</span>
+      <span class="dist-chip">+ 40 more cities</span>
+    </div>
+  </div>
+  <div class="app-graphic">
+    <div class="phone-mockup">
+      📱<br>
+      <span style="font-size:.85rem;color:var(--silver-dark);font-family:'Outfit',sans-serif;display:block;margin-top:8px">FlashGrocer App</span>
+      <span style="font-size:.75rem;color:#4caf82;display:block">⭐ 4.8 · 50K+ Downloads</span>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <div style="background:var(--black-3);border:1px solid rgba(192,192,192,.1);border-radius:12px;padding:12px 16px;text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--silver)">50K+</div>
+        <div style="font-size:.7rem;color:var(--silver-dark)">Happy Users</div>
+      </div>
+      <div style="background:var(--black-3);border:1px solid rgba(192,192,192,.1);border-radius:12px;padding:12px 16px;text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--silver)">10 min</div>
+        <div style="font-size:.7rem;color:var(--silver-dark)">Avg Delivery</div>
+      </div>
+      <div style="background:var(--black-3);border:1px solid rgba(192,192,192,.1);border-radius:12px;padding:12px 16px;text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--silver)">56 Cities</div>
+        <div style="font-size:.7rem;color:var(--silver-dark)">AP + Telangana</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 FlashGrocer – India's Fastest Q-Commerce Platform ⚡ &nbsp;|&nbsp; <a href="http://flashgrocer.in">flashgrocer.in</a></p>
+  <p>
+    <a href="http://flashgrocer.in">Home</a>
+    <a href="http://flashgrocer.in/login">Login</a>
+    <a href="http://flashgrocer.in/#about">About</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+  </p>
+</footer>
+
+<script src="products-data.js"></script>
+<script>
+'use strict';
+
+/* Countdown timer */
+function startCountdown(){
+  let end = new Date();
+  end.setHours(23,59,59,0);
+  function tick(){
+    const now = new Date();
+    let diff = Math.max(0, Math.floor((end-now)/1000));
+    const h = Math.floor(diff/3600); diff %= 3600;
+    const m = Math.floor(diff/60);
+    const s = diff % 60;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    if(diff > 0) setTimeout(tick, 1000);
+  }
+  tick();
+}
+startCountdown();
+
+/* Render sale products */
+let activeCat = 'all';
+
+function getDiscount(p){ return Math.round(100-(p.price/p.originalPrice)*100); }
+function formatINR(v){ return '₹'+Number(v).toFixed(0); }
+
+function renderSale(cat){
+  activeCat = cat;
+  const grid = document.getElementById('saleGrid');
+  let list = ALL_PRODUCTS.filter(p => getDiscount(p) >= 10);
+  if(cat !== 'all') list = list.filter(p => p.category === cat);
+  list.sort((a,b) => getDiscount(b) - getDiscount(a));
+  list = list.slice(0, 32);
+
+  if(list.length === 0){
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#888;padding:48px">No sale items in this category right now.</p>';
+    return;
+  }
+  grid.innerHTML = list.map(p => `
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        ${p.badge ? `<span class="prod-badge">${p.badge}</span>` : ''}
+        <span class="sale-pct-badge">${getDiscount(p)}% OFF</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">${p.category}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-price-row">
+          <span class="prod-price">${formatINR(p.price)}</span>
+          <span class="prod-orig">${formatINR(p.originalPrice)}</span>
+        </div>
+        <div class="prod-delivery">⚡ ${p.delivery}</div>
+        <button class="add-btn" onclick="addAlert('${p.name.replace(/'/g,"\\'")}')">🛒 Add to Cart</button>
+      </div>
+    </div>`).join('');
+}
+
+/* Tab filter */
+document.getElementById('filterTabs').addEventListener('click', e => {
+  const tab = e.target.closest('.cat-tab');
+  if(!tab) return;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  renderSale(tab.dataset.cat);
+});
+
+/* Filter by slab */
+function filterBySlab(minPrice){
+  const list = ALL_PRODUCTS.filter(p => p.price >= minPrice && getDiscount(p) >= 10);
+  if(list.length === 0){ alert('No matching products. Browse all sale items!'); return; }
+  document.getElementById('saleGrid').scrollIntoView({behavior:'smooth'});
+  const grid = document.getElementById('saleGrid');
+  grid.innerHTML = list.sort((a,b) => getDiscount(b)-getDiscount(a)).slice(0,32).map(p => `
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        ${p.badge ? `<span class="prod-badge">${p.badge}</span>` : ''}
+        <span class="sale-pct-badge">${getDiscount(p)}% OFF</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">${p.category}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-price-row">
+          <span class="prod-price">${formatINR(p.price)}</span>
+          <span class="prod-orig">${formatINR(p.originalPrice)}</span>
+        </div>
+        <div class="prod-delivery">⚡ ${p.delivery}</div>
+        <button class="add-btn" onclick="addAlert('${p.name.replace(/'/g,"\\'")}')">🛒 Add to Cart</button>
+      </div>
+    </div>`).join('');
+}
+
+function addAlert(name){
+  window.location.href = '/?added=' + encodeURIComponent(name);
+}
+
+renderSale('all');
+</script>
+</body>
+</html>

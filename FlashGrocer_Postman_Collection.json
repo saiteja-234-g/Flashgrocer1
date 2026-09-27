@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "c1f3a537-8b09-4e38-8c11-92f75a6c0c21",
+		"name": "FlashGrocer - SDG 9 Infrastructure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Get Infrastructure Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/infrastructure/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"infrastructure",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Register Innovation Project",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"project\": \"Autonomous Drone Delivery Network\",\n  \"investment\": \"$5M\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/infrastructure/innovation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"infrastructure",
+						"innovation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="FlashGrocer – India's fastest Q-Commerce platform. Groceries, Food, Biryani, Drinks, Ice Cream &amp; more – delivered in under 10 minutes across Andhra Pradesh &amp; Telangana." />
+  <meta name="keywords"
+    content="FlashGrocer, flashgrocer.in, quick commerce, grocery delivery, food, biryani, chicken, snacks, Hyderabad, Andhra Pradesh, Telangana" />
+  <meta name="author" content="FlashGrocer" />
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="http://flashgrocer.in/" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="FlashGrocer" />
+  <meta property="og:title"       content="FlashGrocer – Delivered in a Flash ⚡" />
+  <meta property="og:description" content="150+ categories. 10-minute delivery. Available across AP &amp; Telangana." />
+  <meta property="og:url"         content="http://flashgrocer.in/" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@FlashGrocer" />
+  <meta name="twitter:title"       content="FlashGrocer ⚡" />
+  <meta name="twitter:description" content="Your daily essentials delivered in a Flash. flashgrocer.in" />
+  <title>FlashGrocer – Delivered in a Flash ⚡ | flashgrocer.in</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- Product Data (must load before script.js) -->
+  <script src="products-data.js"></script>
+</head>
+
+<body>
+
+  <!-- ===== NOTIFICATION BAR ===== -->
+  <div class="notification-bar" id="notificationBar">
+    <span>⚡ Flash Delivery in <strong>10 minutes</strong> – Order now and get <strong>FREE delivery</strong> on your
+      first order!</span>
+    <button class="notif-close" id="notifClose" aria-label="Close notification">✕</button>
+  </div>
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <!-- Logo -->
+      <a href="#" class="logo" id="logoLink" aria-label="FlashGrocer Home">
+        <img src="images/logo.png" alt="FlashGrocer Logo" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-name">Flash<span class="logo-accent">Grocer</span></span>
+          <span class="logo-tagline">Q-Commerce ⚡</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper" id="searchWrapper">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search groceries, biryani, snacks, ice cream..."
+            aria-label="Search products" />
+          <button class="search-btn" id="searchBtn" aria-label="Search">Search</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="header-btn" id="wishlistBtn" aria-label="Wishlist">
+          <span class="btn-icon">♡</span>
+          <span class="btn-label">Wishlist</span>
+        </button>
+        <!-- Auth Buttons (shown when logged OUT) -->
+        <div class="auth-btns" id="authBtns">
+          <button class="header-btn" id="loginBtn" aria-label="Login">
+            <span class="btn-icon">🔑</span>
+            <span class="btn-label">Login</span>
+          </button>
+          <a href="/login.html" class="header-btn btn-silver" id="registerBtn" aria-label="Register">
+            <span class="btn-icon">✨</span>
+            <span class="btn-label">Register</span>
+          </a>
+        </div>
+        <!-- User Dropdown (shown when logged IN) -->
+        <div class="user-menu" id="userMenu" style="display:none">
+          <button class="header-btn user-btn" id="userDropdownBtn" aria-label="User menu" aria-expanded="false">
+            <span class="user-avatar" id="userAvatar">👤</span>
+            <span class="btn-label" id="userNameDisplay">Account</span>
+            <span class="dropdown-arrow">▾</span>
+          </button>
+          <div class="user-dropdown" id="userDropdown" role="menu">
+            <div class="dropdown-header" id="dropdownUserInfo">
+              <span class="d-user-name" id="dUserName">User</span>
+              <span class="d-user-email" id="dUserEmail">email</span>
+              <span class="d-user-role" id="dUserRole">customer</span>
+            </div>
+            <button class="dropdown-item" id="viewProfileBtn" role="menuitem">👤 My Profile</button>
+            <button class="dropdown-item" id="viewOrdersBtn" role="menuitem">📦 My Orders</button>
+            <button class="dropdown-item" id="viewWishlistPageBtn" role="menuitem">♥ Wishlist</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item dropdown-item-danger" id="logoutBtn" role="menuitem">🚪 Logout</button>
+          </div>
+        </div>
+        <button class="header-btn cart-btn" id="cartToggleBtn" aria-label="Open Cart">
+          <span class="btn-icon">🛒</span>
+          <span class="btn-label">Cart</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+
+      <!-- Hamburger for Mobile -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="#categories" class="nav-link active" id="navAll">🏠 All</a></li>
+          <li><a href="#products" class="nav-link" data-filter="grocery">🥦 Grocery</a></li>
+          <li><a href="#products" class="nav-link" data-filter="food">🍕 Food</a></li>
+          <li><a href="#products" class="nav-link" data-filter="icecream">🍦 Ice Cream</a></li>
+          <li><a href="#products" class="nav-link" data-filter="drinks">🥤 Drinks</a></li>
+          <li><a href="#products" class="nav-link" data-filter="snacks">🍿 Snacks</a></li>
+          <li><a href="/sale.html" class="nav-link" style="color:#e05555;font-weight:700">🔥 SALE</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero" aria-label="Hero banner">
+    <div class="hero-bg">
+      <img src="images/hero.png" alt="FlashGrocer - Everything delivered fast" class="hero-bg-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">⚡ Lightning Fast Delivery</div>
+        <h1 class="hero-title">Everything You Need,<br /><span class="silver-shine">Delivered in a Flash</span></h1>
+        <p class="hero-subtitle">Groceries · Biryani · Snacks · Drinks · Ice Cream — all at your doorstep in under 10 minutes. Available across <strong>Andhra Pradesh &amp; Telangana</strong>.</p>
+        <div class="hero-cta">
+          <a href="#products" class="btn btn-primary" id="heroShopBtn">Shop Now ⚡</a>
+          <a href="#categories" class="btn btn-outline" id="heroExploreBtn">Explore Categories</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">50K+</span>
+            <span class="stat-label">Happy Customers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">10 min</span>
+            <span class="stat-label">Avg. Delivery</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">5000+</span>
+            <span class="stat-label">Products</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll down indicator -->
+    <a href="#categories" class="scroll-down" id="scrollDownArrow" aria-label="Scroll down">
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- ===== FEATURES BAR ===== -->
+  <section class="features-bar" id="featuresBar">
+    <div class="container features-grid">
+      <div class="feature-item">
+        <span class="feature-icon">⚡</span>
+        <div>
+          <h3>10-Min Delivery</h3>
+          <p>Ultra-fast delivery to your door</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔒</span>
+        <div>
+          <h3>Secure Payments</h3>
+          <p>100% safe &amp; encrypted checkout</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">↩️</span>
+        <div>
+          <h3>Easy Returns</h3>
+          <p>Hassle-free 7-day return policy</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🎁</span>
+        <div>
+          <h3>Best Deals</h3>
+          <p>Daily offers &amp; exclusive discounts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORIES SECTION ===== -->
+  <section class="categories-section" id="categories" aria-label="Product Categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Shop by <span class="silver-shine">Category</span></h2>
+        <p class="section-subtitle">Everything under one roof, delivered to your doorstep</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+        <button class="category-card active" data-category="all" id="catAll" aria-label="All categories">
+          <div class="cat-icon-wrap">🛍️</div>
+          <span class="cat-name">All Items</span>
+          <span class="cat-count">200+ items</span>
+        </button>
+        <button class="category-card" data-category="grocery" id="catGrocery" aria-label="Groceries category">
+          <div class="cat-img-wrap">
+            <img src="images/cat_grocery.png" alt="Groceries" />
+          </div>
+          <span class="cat-name">Groceries</span>
+          <span class="cat-count">80+ items</span>
+        </button>
+        <button class="category-card" data-category="food" id="catFood" aria-label="Food category">
+          <div class="cat-img-wrap">
+            <img src="images/cat_food.png" alt="Food" />
+          </div>
+          <span class="cat-name">Food</span>
+          <span class="cat-count">60+ items</span>
+        </button>
+        <button class="category-card" data-category="snacks" id="catSnacks" aria-label="Snacks category">
+          <div class="cat-img-wrap">
+            <img src="images/cat_food.png" alt="Snacks" />
+          </div>
+          <span class="cat-name">Snacks</span>
+          <span class="cat-count">40+ items</span>
+        </button>
+        <button class="category-card" data-category="drinks" id="catDrinks" aria-label="Drinks category">
+          <div class="cat-img-wrap">
+            <img src="images/cat_food.png" alt="Drinks" />
+          </div>
+          <span class="cat-name">Drinks</span>
+          <span class="cat-count">20+ items</span>
+        </button>
+        <button class="category-card" data-category="icecream" id="catIceCream" aria-label="Ice Cream category">
+          <div class="cat-img-wrap">
+            <img src="images/cat_food.png" alt="Ice Cream" />
+          </div>
+          <span class="cat-name">Ice Cream</span>
+          <span class="cat-count">10+ items</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS SECTION ===== -->
+  <section class="products-section" id="products" aria-label="Products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="productsTitle">Featured <span class="silver-shine">Products</span></h2>
+        <p class="section-subtitle" id="productsSubtitle">Top picks across all categories</p>
+      </div>
+
+      <!-- Sort & Filter Bar -->
+      <div class="filter-bar" id="filterBar">
+        <div class="filter-chips" id="filterChips">
+          <span class="filter-chip active" data-sort="default" id="chipDefault">⭐ Featured</span>
+          <span class="filter-chip" data-sort="price-asc" id="chipPriceAsc">↑ Price: Low–High</span>
+          <span class="filter-chip" data-sort="price-desc" id="chipPriceDesc">↓ Price: High–Low</span>
+          <span class="filter-chip" data-sort="rating" id="chipRating">🌟 Top Rated</span>
+        </div>
+        <span class="product-count" id="productCount">Showing 8 products</span>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="btn btn-outline" id="loadMoreBtn">Load More Products ↓</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFFERS SECTION ===== -->
+  <section class="offers-section" id="offers" aria-label="Special Offers">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🔥 Special <span class="silver-shine">Offers</span></h2>
+        <p class="section-subtitle">Limited time deals – grab them before they're gone!</p>
+      </div>
+      <div class="offers-grid" id="offersGrid">
+        <div class="offer-card offer-big" id="offerBig">
+          <div class="offer-badge">50% OFF</div>
+          <div class="offer-content">
+            <h3>Fresh Groceries Bundle</h3>
+            <p>Get 50% off on your first grocery order over ₹499</p>
+            <button class="btn btn-primary" id="offerBtn1">Grab Deal</button>
+          </div>
+          <div class="offer-deco">🥦🍎🥕</div>
+        </div>
+        <div class="offer-card" id="offerSmall1">
+          <div class="offer-badge">FREE</div>
+          <div class="offer-content">
+            <h3>Free Delivery</h3>
+            <p>On all orders above ₹299. Use code: <strong>FLASH10</strong></p>
+            <button class="btn btn-outline" id="offerBtn2">Apply Code</button>
+          </div>
+          <div class="offer-deco">⚡</div>
+        </div>
+        <div class="offer-card" id="offerSmall2">
+          <div class="offer-badge">30% OFF</div>
+          <div class="offer-content">
+            <h3>Biryani Fest Sale</h3>
+            <p>30% discount on all family pack biryanis</p>
+            <button class="btn btn-outline" id="offerBtn3">Shop Biryani</button>
+          </div>
+          <div class="offer-deco">🍗</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about-section" id="about" aria-label="About FlashGrocer">
+    <div class="container about-inner">
+      <div class="about-text">
+        <div class="section-badge">About Us</div>
+        <h2 class="section-title">Why Choose <span class="silver-shine">FlashGrocer?</span></h2>
+        <p class="about-desc">FlashGrocer is India's fastest growing Q-Commerce platform. We bring groceries,
+          food, biryani, snacks and all daily essentials right to your doorstep in under 10 minutes. Our mission
+          is simple: <strong>make your life easier, one order at a time.</strong></p>
+        <ul class="about-list">
+          <li><span>✅</span> 5000+ products across 5 major categories</li>
+          <li><span>✅</span> Real-time order tracking via app</li>
+          <li><span>✅</span> 24/7 customer support</li>
+          <li><span>✅</span> Verified quality products guaranteed</li>
+          <li><span>✅</span> Eco-friendly packaging</li>
+        </ul>
+      </div>
+      <div class="about-stats-panel">
+        <div class="about-stat-card">
+          <span class="astat-num">50K+</span>
+          <span class="astat-label">Active Users</span>
+        </div>
+        <div class="about-stat-card">
+          <span class="astat-num">20+</span>
+          <span class="astat-label">Cities Covered</span>
+        </div>
+        <div class="about-stat-card">
+          <span class="astat-num">4.8★</span>
+          <span class="astat-label">App Rating</span>
+        </div>
+        <div class="about-stat-card">
+          <span class="astat-num">10 min</span>
+          <span class="astat-label">Avg Delivery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="images/logo.png" alt="FlashGrocer Logo" class="footer-logo-img" />
+            <span class="footer-logo-name">Flash<span class="logo-accent">Grocer</span></span>
+          </div>
+          <p class="footer-tagline">Your ultimate Q-Commerce destination. Delivered in a flash, every single time.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" id="socialFb" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn" id="socialTw" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" id="socialIg" aria-label="Instagram">📸</a>
+            <a href="#" class="social-btn" id="socialYt" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#hero" id="fLinkHome">Home</a></li>
+            <li><a href="#categories" id="fLinkCat">Categories</a></li>
+            <li><a href="#offers" id="fLinkOffers">Offers</a></li>
+            <li><a href="#about" id="fLinkAbout">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="#" id="fLinkGrocery">Groceries</a></li>
+            <li><a href="#" id="fLinkFood">Food &amp; Biryani</a></li>
+            <li><a href="#" id="fLinkSnacks">Snacks</a></li>
+            <li><a href="#" id="fLinkDrinks">Drinks</a></li>
+            <li><a href="#" id="fLinkIceCream">Ice Cream</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" id="fLinkFaq">FAQ</a></li>
+            <li><a href="#" id="fLinkContact">Contact Us</a></li>
+            <li><a href="#" id="fLinkTrack">Track Order</a></li>
+            <li><a href="#" id="fLinkReturn">Returns</a></li>
+            <li><a href="#" id="fLinkPrivacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>📍 123 Flash Street, Tech Park, Bangalore – 560001</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ support@flashgrocer.in</p>
+          <p>🕐 24 × 7 Support Available</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 <a href="http://flashgrocer.in" target="_blank" style="color:var(--silver);font-weight:700">flashgrocer.in</a> — India's Fastest Q-Commerce Platform. All rights reserved. Made with ⚡ for quick commerce.</p>
+        <div class="payment-icons">
+          <span class="pay-icon" title="UPI">UPI</span>
+          <span class="pay-icon" title="Visa">VISA</span>
+          <span class="pay-icon" title="MasterCard">MC</span>
+          <span class="pay-icon" title="Paytm">PTM</span>
+          <span class="pay-icon" title="COD">COD</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== CART SIDEBAR ===== -->
+  <aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping Cart" role="complementary">
+    <div class="cart-header">
+      <h2 class="cart-title">🛒 Your Cart</h2>
+      <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">✕</button>
+    </div>
+
+    <!-- Cart Items -->
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Populated by JS -->
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-icon">🛒</div>
+        <p>Your cart is empty!</p>
+        <span>Add products to get started.</span>
+      </div>
+    </div>
+
+    <!-- Cart Breakdown -->
+    <div class="cart-breakdown" id="cartBreakdown">
+      <h3 class="breakdown-title">Order Breakdown</h3>
+      <div class="breakdown-rows" id="breakdownRows">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Promo Code -->
+      <div class="promo-section">
+        <div class="promo-input-wrap">
+          <input type="text" id="promoInput" placeholder="Enter promo code" aria-label="Promo code" />
+          <button class="promo-apply-btn" id="promoApplyBtn">Apply</button>
+        </div>
+        <p class="promo-msg" id="promoMsg"></p>
+      </div>
+
+      <!-- Price Breakdown Table -->
+      <div class="price-table">
+        <div class="price-row">
+          <span>Subtotal</span>
+          <span id="priceSubtotal">₹0.00</span>
+        </div>
+        <div class="price-row">
+          <span>Discount</span>
+          <span id="priceDiscount" class="discount-val">-₹0.00</span>
+        </div>
+        <div class="price-row">
+          <span>Delivery Fee</span>
+          <span id="priceDelivery">₹40.00</span>
+        </div>
+        <div class="price-row">
+          <span>GST (5%)</span>
+          <span id="priceGst">₹0.00</span>
+        </div>
+        <div class="price-row total-row">
+          <span>Total</span>
+          <span id="priceTotal">₹0.00</span>
+        </div>
+      </div>
+
+      <!-- Checkout -->
+      <button class="btn btn-primary checkout-btn" id="checkoutBtn">
+        Proceed to Checkout ⚡
+      </button>
+      <p class="secure-note">🔒 Secure &amp; Encrypted Checkout</p>
+    </div>
+  </aside>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- ===== SALE STRIP ===== -->
+  <div class="sale-strip" id="saleStrip">
+    <span>🔥 <strong>MEGA SALE</strong> – Up to 50% OFF on everything! Use code <strong>FLASH10</strong></span>
+    <a href="/sale.html" class="sale-strip-btn">Shop Sale →</a>
+    <button id="saleStripClose" aria-label="Close">✕</button>
+  </div>
+
+  <!-- ===== APP DOWNLOAD SECTION ===== -->
+  <section class="app-download-section" id="appDownload">
+    <div class="container app-download-inner">
+      <div class="app-download-text">
+        <div class="app-download-label">📱 Download the App</div>
+        <h2 class="app-download-title">FlashGrocer on Android &amp; iOS</h2>
+        <p class="app-download-sub">Order anything in under 10 minutes. Available across <strong>all districts of Andhra Pradesh &amp; Telangana</strong>. Exclusive app-only deals every day!</p>
+        <div class="app-store-row">
+          <a href="#" class="app-store-card">
+            <span class="store-ic">🤖</span>
+            <div><span class="store-t">GET IT ON</span><span class="store-n">Google Play</span></div>
+          </a>
+          <a href="#" class="app-store-card">
+            <span class="store-ic"></span>
+            <div><span class="store-t">DOWNLOAD ON THE</span><span class="store-n">App Store</span></div>
+          </a>
+        </div>
+        <div class="district-chips">
+          <span class="dist-chip">Hyderabad</span><span class="dist-chip">Warangal</span>
+          <span class="dist-chip">Nizamabad</span><span class="dist-chip">Karimnagar</span>
+          <span class="dist-chip">Khammam</span><span class="dist-chip">Nalgonda</span>
+          <span class="dist-chip">Visakhapatnam</span><span class="dist-chip">Vijayawada</span>
+          <span class="dist-chip">Guntur</span><span class="dist-chip">Tirupati</span>
+          <span class="dist-chip">Nellore</span><span class="dist-chip">Kurnool</span>
+          <span class="dist-chip">Rajahmundry</span><span class="dist-chip">Kakinada</span>
+          <span class="dist-chip">Eluru</span><span class="dist-chip">Ongole</span>
+          <span class="dist-chip">Srikakulam</span><span class="dist-chip">Vizianagaram</span>
+          <span class="dist-chip">Anantapur</span><span class="dist-chip">Kadapa</span>
+          <span class="dist-chip">+ 36 more cities ⚡</span>
+        </div>
+      </div>
+      <div class="app-download-graphic">
+        <div class="phone-float">⚡</div>
+        <div class="app-stats-grid">
+          <div class="app-stat"><span class="app-stat-n">50K+</span><span class="app-stat-l">Users</span></div>
+          <div class="app-stat"><span class="app-stat-n">4.8★</span><span class="app-stat-l">Rating</span></div>
+          <div class="app-stat"><span class="app-stat-n">10 min</span><span class="app-stat-l">Delivery</span></div>
+          <div class="app-stat"><span class="app-stat-n">56+</span><span class="app-stat-l">Cities</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHECKOUT MODAL ===== -->
+  <div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close checkout">✕</button>
+      <div class="modal-icon">✅</div>
+      <h2 class="modal-title">Order Placed Successfully!</h2>
+      <p class="modal-msg">Your FlashGrocer order is confirmed. Estimated delivery: <strong>10 minutes</strong> ⚡</p>
+      <div class="modal-order-id" id="modalOrderId"></div>
+      <button class="btn btn-primary" id="modalOkBtn">Track My Order</button>
+    </div>
+  </div>
+
+  <!-- ===== AUTH MODAL ===== -->
+  <div class="modal-overlay" id="authModal" role="dialog" aria-modal="true" aria-label="Authentication">
+    <div class="modal auth-modal">
+      <button class="modal-close" id="authModalClose" aria-label="Close">✕</button>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" data-tab="login">🔑 Login</button>
+        <button class="auth-tab" id="tabRegister" data-tab="register">✨ Register</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="auth-form" id="loginForm">
+        <div class="auth-header">
+          <div class="modal-icon">⚡</div>
+          <h2 class="modal-title">Welcome Back!</h2>
+          <p class="auth-subtitle">Sign in to your FlashGrocer account</p>
+        </div>
+        <form id="loginFormEl" novalidate>
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <span class="field-error" id="loginEmailErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password"
+                required />
+              <button type="button" class="pwd-toggle" id="toggleLoginPwd" aria-label="Toggle password">👁</button>
+            </div>
+            <span class="field-error" id="loginPwdErr"></span>
+          </div>
+          <button type="submit" class="btn btn-primary auth-submit-btn" id="loginSubmitBtn">
+            Login ⚡
+          </button>
+          <div class="auth-alt">
+            <span>Don't have an account?</span>
+            <button type="button" class="switch-tab-link" data-tab="register">Register here →</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="auth-form" id="registerForm" style="display:none">
+        <div class="auth-header">
+          <div class="modal-icon">🚀</div>
+          <h2 class="modal-title">Create Account</h2>
+          <p class="auth-subtitle">Join 50K+ FlashGrocer customers</p>
+        </div>
+        <form id="registerFormEl" novalidate>
+          <div class="form-group">
+            <label for="regName">Full Name</label>
+            <div class="input-wrap">
+              <span class="input-icon">👤</span>
+              <input type="text" id="regName" placeholder="Your full name" autocomplete="name" required />
+            </div>
+            <span class="field-error" id="regNameErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <span class="field-error" id="regEmailErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Phone (Optional)</label>
+            <div class="input-wrap">
+              <span class="input-icon">📞</span>
+              <input type="tel" id="regPhone" placeholder="+91 98765 43210" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="regPassword" placeholder="Min 6 chars, 1 uppercase, 1 digit"
+                autocomplete="new-password" required />
+              <button type="button" class="pwd-toggle" id="toggleRegPwd" aria-label="Toggle password">👁</button>
+            </div>
+            <!-- Password Strength Indicator -->
+            <div class="pwd-strength" id="pwdStrength">
+              <div class="strength-bar" id="strengthBar"></div>
+            </div>
+            <span class="strength-label" id="strengthLabel"></span>
+            <span class="field-error" id="regPwdErr"></span>
+          </div>
+          <button type="submit" class="btn btn-primary auth-submit-btn" id="registerSubmitBtn">
+            Create Account 🚀
+          </button>
+          <div class="auth-alt">
+            <span>Already have an account?</span>
+            <button type="button" class="switch-tab-link" data-tab="login">Login here →</button>
+          </div>
+        </form>
+      </div>
+      <div class="auth-error" id="authError"></div>
+    </div>
+  </div>
+
+  <!-- ===== PROFILE MODAL ===== -->
+  <div class="modal-overlay" id="profileModal" role="dialog" aria-modal="true" aria-label="My Profile">
+    <div class="modal profile-modal">
+      <button class="modal-close" id="profileModalClose" aria-label="Close">✕</button>
+      <div class="modal-icon">👤</div>
+      <h2 class="modal-title">My Profile</h2>
+      <form id="profileFormEl" class="profile-form">
+        <div class="form-group">
+          <label for="profileName">Full Name</label>
+          <div class="input-wrap"><span class="input-icon">👤</span><input type="text" id="profileName" /></div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <div class="input-wrap"><span class="input-icon">✉️</span><input type="email" id="profileEmail" readonly
+              class="readonly-input" /></div>
+        </div>
+        <div class="form-group">
+          <label for="profilePhone">Phone</label>
+          <div class="input-wrap"><span class="input-icon">📞</span><input type="tel" id="profilePhone"
+              placeholder="+91 98765 43210" /></div>
+        </div>
+        <div class="form-group">
+          <label for="profileAddress">Delivery Address</label>
+          <div class="input-wrap"><span class="input-icon">📍</span><textarea id="profileAddress" rows="2"
+              placeholder="Your delivery address"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">Save Changes ✅</button>
+      </form>
+      <div class="profile-divider"><span>Security</span></div>
+      <form id="changePwdFormEl" class="profile-form">
+        <div class="form-group">
+          <label for="currentPwd">Current Password</label>
+          <div class="input-wrap"><span class="input-icon">🔒</span><input type="password" id="currentPwd"
+              placeholder="Current password" /></div>
+        </div>
+        <div class="form-group">
+          <label for="newPwd">New Password</label>
+          <div class="input-wrap"><span class="input-icon">🔑</span><input type="password" id="newPwd"
+              placeholder="New password" /></div>
+        </div>
+        <button type="submit" class="btn btn-outline auth-submit-btn">Change Password 🔑</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== ORDERS MODAL ===== -->
+  <div class="modal-overlay" id="ordersModal" role="dialog" aria-modal="true" aria-label="My Orders">
+    <div class="modal orders-modal">
+      <button class="modal-close" id="ordersModalClose" aria-label="Close">✕</button>
+      <div class="modal-icon">📦</div>
+      <h2 class="modal-title">My Orders</h2>
+      <div class="orders-list" id="ordersList">
+        <div class="orders-loading" id="ordersLoading">Loading orders…</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

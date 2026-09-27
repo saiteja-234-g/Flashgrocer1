@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in or create your FlashGrocer account. Order groceries, food, biryani and more – delivered in 10 minutes across AP &amp; Telangana. flashgrocer.in" />
+  <link rel="canonical" href="http://flashgrocer.in/login" />
+  <meta property="og:site_name" content="FlashGrocer" />
+  <meta property="og:url" content="http://flashgrocer.in/login" />
+  <title>FlashGrocer – Login &amp; Register ⚡ | flashgrocer.in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ========================================================
+       RESET & VARIABLES
+       ======================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:        #1a0800;
+      --black-2:      #220e00;
+      --black-3:      #2e1500;
+      --black-4:      #3d1e00;
+      --silver:       #ffd6a0;
+      --silver-light: #ffe8cc;
+      --silver-dark:  #c8895a;
+      --silver-shine: #fff3e0;
+      --white:        #fff;
+      --danger:       #e05555;
+      --success:      #4caf82;
+      --warning:      #ff8c00;
+      --grad-silver:  linear-gradient(135deg,#e65c00 0%,#ffa040 35%,#ffd080 55%,#ff8800 75%,#c44d00 100%);
+      --grad-card:    linear-gradient(145deg,#2a1200,#1a0800);
+      --font-main:    'Outfit', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius-md:    12px;
+      --radius-lg:    20px;
+      --radius-xl:    30px;
+      --transition:   .3s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--silver-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    input  { font-family: inherit; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--black-2); }
+    ::-webkit-scrollbar-thumb { background: var(--silver-dark); border-radius: 3px; }
+
+    /* ========================================================
+       ANIMATED BACKGROUND
+       ======================================================== */
+    .bg-animated {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 20% 50%, rgba(255,120,0,.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(255,80,0,.04) 0%, transparent 50%),
+                  linear-gradient(180deg, #1a0800 0%, #2e1500 50%, #1a0800 100%);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.1;
+      animation: orbFloat linear infinite;
+    }
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #ff6600, transparent);
+      top: -200px; left: -100px;
+      animation-duration: 20s;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #ff4400, transparent);
+      bottom: -100px; right: -50px;
+      animation-duration: 25s;
+      animation-direction: reverse;
+    }
+    .orb-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #ffaa00, transparent);
+      top: 50%; left: 50%;
+      animation-duration: 15s;
+      opacity: 0.06;
+    }
+    @keyframes orbFloat {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      33%  { transform: translate(30px, -40px) rotate(120deg); }
+      66%  { transform: translate(-20px, 20px) rotate(240deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    /* Particle dots */
+    .particles {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,160,0,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 70%, rgba(255,120,0,.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 20%, rgba(255,200,0,.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,140,0,.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 10%, rgba(255,100,0,.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 60%, rgba(255,180,0,.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(255,140,0,.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 90%, rgba(255,120,0,.2) 0%, transparent 100%);
+      animation: particleDrift 30s linear infinite;
+    }
+    @keyframes particleDrift {
+      0%   { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+
+    /* Grid overlay */
+    .grid-overlay {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,120,0,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,120,0,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridPulse 8s ease-in-out infinite;
+    }
+    @keyframes gridPulse {
+      0%,100% { opacity: .5; }
+      50%      { opacity: 1; }
+    }
+
+    /* ========================================================
+       LAYOUT
+       ======================================================== */
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* ========================================================
+       LEFT PANEL – Branding
+       ======================================================== */
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .left-panel::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(192,192,192,.2) 30%, rgba(192,192,192,.2) 70%, transparent);
+    }
+
+    /* Logo */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+    .brand-icon {
+      width: 56px; height: 56px;
+      background: var(--grad-silver);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 32px rgba(192,192,192,.2);
+    }
+    .brand-name {
+      font-family: var(--font-main);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--silver-light);
+      letter-spacing: -.5px;
+    }
+    .brand-name span {
+      background: var(--grad-silver);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Headline */
+    .left-headline {
+      font-family: var(--font-main);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .left-headline .shine-text {
+      background: var(--grad-silver);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: shineMove 3s linear infinite;
+    }
+    @keyframes shineMove {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .left-sub {
+      font-size: 1rem;
+      color: var(--silver-dark);
+      max-width: 380px;
+      margin-bottom: 52px;
+      line-height: 1.7;
+    }
+
+    /* Feature Pills */
+    .feature-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(192,192,192,.05);
+      border: 1px solid rgba(192,192,192,.1);
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+      animation: pillSlide .6s ease both;
+    }
+    .pill:nth-child(1) { animation-delay: .1s; }
+    .pill:nth-child(2) { animation-delay: .2s; }
+    .pill:nth-child(3) { animation-delay: .3s; }
+    .pill:hover {
+      background: rgba(192,192,192,.09);
+      border-color: rgba(192,192,192,.2);
+      transform: translateX(4px);
+    }
+    @keyframes pillSlide {
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .pill-icon {
+      width: 40px; height: 40px;
+      background: rgba(192,192,192,.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .pill-text strong {
+      display: block;
+      font-family: var(--font-main);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--silver-light);
+    }
+    .pill-text span {
+      font-size: .78rem;
+      color: var(--silver-dark);
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: flex;
+      gap: 32px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: var(--font-main);
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: var(--grad-silver);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+    .stat-label { font-size: .75rem; color: var(--silver-dark); }
+    .stat-divider { width: 1px; background: rgba(192,192,192,.15); align-self: stretch; }
+
+    /* Floating badge */
+    .badge-float {
+      position: absolute;
+      top: 40px; right: 40px;
+      padding: 10px 18px;
+      background: rgba(192,192,192,.08);
+      border: 1px solid rgba(192,192,192,.2);
+      border-radius: var(--radius-xl);
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--silver);
+      animation: badgePulse 2.5s ease-in-out infinite;
+      backdrop-filter: blur(10px);
+    }
+    @keyframes badgePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(192,192,192,.1); }
+      50%      { box-shadow: 0 0 0 8px rgba(192,192,192,.0); }
+    }
+
+    /* ========================================================
+       RIGHT PANEL – Auth Form
+       ======================================================== */
+    .right-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 40px;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(18,18,18,.9);
+      border: 1px solid rgba(192,192,192,.12);
+      border-radius: 24px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,.8),
+        0 0 0 1px rgba(192,192,192,.05) inset;
+      overflow: hidden;
+      animation: cardIn .7s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(40px) scale(.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+
+    /* Card Top Bar – shimmer accent */
+    .card-top-bar {
+      height: 3px;
+      background: var(--grad-silver);
+      background-size: 200% auto;
+      animation: shineMove 2s linear infinite;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      background: rgba(0,0,0,.3);
+      border-bottom: 1px solid rgba(192,192,192,.08);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 18px;
+      font-family: var(--font-main);
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--silver-dark);
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+      letter-spacing: .3px;
+    }
+    .tab-btn:hover { color: var(--silver-light); background: rgba(192,192,192,.03); }
+    .tab-btn.active {
+      color: var(--silver-light);
+      border-bottom-color: var(--silver);
+      background: rgba(192,192,192,.05);
+    }
+
+    /* Form body */
+    .form-body { padding: 32px; }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .form-icon {
+      font-size: 2.4rem;
+      display: block;
+      margin-bottom: 10px;
+      animation: iconBounce .8s ease;
+    }
+    @keyframes iconBounce {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.15); }
+    }
+    .form-title {
+      font-family: var(--font-main);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--silver-light);
+      margin-bottom: 6px;
+    }
+    .form-subtitle {
+      font-size: .83rem;
+      color: var(--silver-dark);
+    }
+
+    /* Form groups */
+    .fg {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .fg label {
+      font-size: .74rem;
+      font-weight: 700;
+      color: var(--silver-dark);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(192,192,192,.12);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .input-row::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad-silver);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .input-row:focus-within {
+      border-color: rgba(192,192,192,.35);
+      box-shadow: 0 0 0 3px rgba(192,192,192,.08), 0 4px 16px rgba(0,0,0,.4);
+      background: rgba(255,255,255,.05);
+    }
+    .i-icon {
+      padding: 0 14px;
+      font-size: 1rem;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .input-row input {
+      flex: 1; background: none; border: none; outline: none;
+      color: var(--silver-light);
+      font-size: .92rem;
+      padding: 13px 8px;
+      z-index: 1;
+    }
+    .input-row input::placeholder { color: rgba(136,136,136,.7); }
+    .eye-btn {
+      padding: 0 14px; z-index: 1;
+      color: var(--silver-dark); font-size: .9rem;
+      transition: color var(--transition);
+    }
+    .eye-btn:hover { color: var(--silver-light); }
+    .ferr { font-size: .74rem; color: var(--danger); min-height: 16px; }
+
+    /* Password strength */
+    .pwd-meter {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .pwd-bar {
+      flex: 1; height: 3px;
+      border-radius: 2px;
+      background: rgba(192,192,192,.1);
+      transition: background .3s ease;
+    }
+    .pwd-lbl {
+      font-size: .73rem;
+      color: var(--silver-dark);
+      margin-top: 4px;
+    }
+    .pwd-bar.lit-red    { background: var(--danger); }
+    .pwd-bar.lit-orange { background: var(--warning); }
+    .pwd-bar.lit-green  { background: var(--success); }
+
+    /* Remember / extras */
+    .form-extras {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .check-label {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .82rem; color: var(--silver-dark);
+      cursor: pointer;
+    }
+    .check-label input[type="checkbox"] {
+      width: 15px; height: 15px;
+      accent-color: var(--silver);
+    }
+    .forgot-link {
+      font-size: .82rem;
+      color: var(--silver-dark);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition);
+    }
+    .forgot-link:hover { color: var(--silver-light); }
+
+    /* Submit button */
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--grad-silver);
+      background-size: 200% auto;
+      color: var(--black);
+      border-radius: var(--radius-md);
+      font-family: var(--font-main);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: .3px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 24px rgba(192,192,192,.25);
+      transition: all var(--transition);
+      animation: shineMove 3s linear infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,.15);
+      transform: translateX(-100%) skewX(-15deg);
+      transition: transform .5s ease;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(192,192,192,.4); }
+    .submit-btn:hover::before { transform: translateX(200%) skewX(-15deg); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn.loading { opacity: .7; pointer-events: none; }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(0,0,0,.25);
+      border-top-color: var(--black);
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+      display: none;
+    }
+    .submit-btn.loading .spinner { display: block; }
+    .submit-btn.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Divider */
+    .or-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 20px 0;
+      font-size: .75rem;
+      color: var(--silver-dark);
+      letter-spacing: .5px;
+    }
+    .or-divider::before, .or-divider::after {
+      content: ''; flex: 1;
+      height: 1px; background: rgba(192,192,192,.1);
+    }
+
+    /* Social buttons */
+    .social-btns {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .social-btn {
+      flex: 1;
+      padding: 11px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(192,192,192,.12);
+      border-radius: var(--radius-md);
+      font-size: .82rem;
+      color: var(--silver-light);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all var(--transition);
+    }
+    .social-btn:hover {
+      background: rgba(192,192,192,.08);
+      border-color: rgba(192,192,192,.22);
+      transform: translateY(-1px);
+    }
+
+    /* Switch tab */
+    .switch-row {
+      text-align: center;
+      font-size: .83rem;
+      color: var(--silver-dark);
+      padding-top: 16px;
+    }
+    .switch-row button {
+      color: var(--silver);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: .83rem;
+      transition: color var(--transition);
+    }
+    .switch-row button:hover { color: var(--white); }
+
+    /* Error banner */
+    .err-banner {
+      display: none;
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: rgba(224,85,85,.1);
+      border: 1px solid rgba(224,85,85,.25);
+      border-radius: var(--radius-md);
+      font-size: .85rem;
+      color: var(--danger);
+    }
+    .err-banner.show { display: flex; align-items: center; gap: 8px; }
+
+    /* ========================================================
+       SUCCESS CARD
+       ======================================================== */
+    .success-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 48px 32px;
+      gap: 16px;
+    }
+    .success-card.show { display: flex; }
+    .success-icon {
+      width: 80px; height: 80px;
+      background: rgba(76,175,130,.12);
+      border: 2px solid rgba(76,175,130,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem;
+      animation: successPop .5s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes successPop {
+      from { transform: scale(0) rotate(-30deg); opacity: 0; }
+      to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+    }
+    .success-card h2 {
+      font-family: var(--font-main);
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--silver-light);
+    }
+    .success-card p { color: var(--silver-dark); font-size: .9rem; }
+    .home-btn {
+      padding: 12px 32px;
+      background: var(--grad-silver);
+      color: var(--black);
+      border-radius: var(--radius-xl);
+      font-family: var(--font-main);
+      font-weight: 700; font-size: .95rem;
+      box-shadow: 0 4px 20px rgba(192,192,192,.2);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all var(--transition);
+      margin-top: 8px;
+    }
+    .home-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(192,192,192,.35); }
+
+    /* ========================================================
+       BACK TO SITE LINK
+       ======================================================== */
+    .back-link {
+      position: fixed;
+      top: 24px; left: 24px;
+      z-index: 100;
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: rgba(18,18,18,.8);
+      border: 1px solid rgba(192,192,192,.12);
+      border-radius: var(--radius-xl);
+      font-size: .83rem;
+      color: var(--silver-dark);
+      backdrop-filter: blur(10px);
+      transition: all var(--transition);
+    }
+    .back-link:hover {
+      background: rgba(192,192,192,.08);
+      border-color: rgba(192,192,192,.25);
+      color: var(--silver-light);
+      transform: translateX(-2px);
+    }
+
+    /* ========================================================
+       TRUST BADGES
+       ======================================================== */
+    .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 14px 24px;
+      background: rgba(0,0,0,.25);
+      border-top: 1px solid rgba(192,192,192,.06);
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: .72rem;
+      color: var(--silver-dark);
+    }
+
+    /* ========================================================
+       ANIMATIONS
+       ======================================================== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn .4s ease; }
+
+    /* ========================================================
+       RESPONSIVE
+       ======================================================== */
+    @media (max-width: 900px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .left-panel { display: none; }
+      .right-panel { padding: 32px 20px; }
+      .back-link { top: 16px; left: 16px; }
+    }
+    @media (max-width: 480px) {
+      .auth-card { border-radius: 16px; }
+      .form-body { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-animated">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="particles"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Back to Site -->
+  <a href="/" class="back-link" id="backToSite">
+    ← Back to FlashGrocer
+  </a>
+
+  <div class="page-wrap">
+
+    <!-- ==================== LEFT PANEL ==================== -->
+    <div class="left-panel">
+      <div class="badge-float">⚡ Live · 50,000+ customers</div>
+
+      <!-- Logo -->
+      <div class="brand-logo">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <div class="brand-name">Flash<span>Grocer</span></div>
+          <div style="font-size:.65rem;color:var(--silver-dark);letter-spacing:1px">Q-COMMERCE PLATFORM</div>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="left-headline">
+        Your Daily Essentials,<br>
+        <span class="shine-text">Delivered in a Flash</span>
+      </h1>
+      <p class="left-sub">
+        Join 50,000+ customers getting groceries, food, biryani and daily needs delivered in under 10 minutes. One account — everything you need.
+      </p>
+
+      <!-- Feature Pills -->
+      <div class="feature-pills">
+        <div class="pill">
+          <div class="pill-icon">⚡</div>
+          <div class="pill-text">
+            <strong>10-Minute Delivery</strong>
+            <span>Fastest Q-Commerce in India</span>
+          </div>
+        </div>
+        <div class="pill">
+          <div class="pill-icon">🔒</div>
+          <div class="pill-text">
+            <strong>Bank-Level Security</strong>
+            <span>JWT + bcrypt encrypted accounts</span>
+          </div>
+        </div>
+        <div class="pill">
+          <div class="pill-icon">🎁</div>
+          <div class="pill-text">
+            <strong>Exclusive Member Deals</strong>
+            <span>Promo codes & daily discounts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">50K+</span>
+          <span class="stat-label">Customers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">5000+</span>
+          <span class="stat-label">Products</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">4.8★</span>
+          <span class="stat-label">App Rating</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== RIGHT PANEL ==================== -->
+    <div class="right-panel">
+      <div class="auth-card">
+        <div class="card-top-bar"></div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">🔑 Sign In</button>
+          <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">🚀 Create Account</button>
+        </div>
+
+        <!-- ══ LOGIN FORM ══ -->
+        <div id="loginSection">
+          <div class="form-body">
+            <div class="form-header">
+              <span class="form-icon" id="loginIcon">⚡</span>
+              <h2 class="form-title">Welcome Back</h2>
+              <p class="form-subtitle">Sign in to continue shopping ⚡</p>
+            </div>
+
+            <div class="err-banner" id="loginErr">
+              <span>⚠️</span><span id="loginErrMsg"></span>
+            </div>
+
+            <form id="loginFormEl" novalidate>
+              <div class="fg">
+                <label for="loginEmail">Email Address</label>
+                <div class="input-row">
+                  <span class="i-icon">✉️</span>
+                  <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required />
+                </div>
+                <span class="ferr" id="eLoginEmail"></span>
+              </div>
+
+              <div class="fg">
+                <label for="loginPwd">Password</label>
+                <div class="input-row">
+                  <span class="i-icon">🔒</span>
+                  <input type="password" id="loginPwd" placeholder="Your password" autocomplete="current-password" required />
+                  <button type="button" class="eye-btn" id="toggleLoginPwd">👁</button>
+                </div>
+                <span class="ferr" id="eLoginPwd"></span>
+              </div>
+
+              <div class="form-extras">
+                <label class="check-label">
+                  <input type="checkbox" id="rememberMe" /> Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="submit-btn" id="loginSubmit">
+                <div class="spinner"></div>
+                <span class="btn-text">Sign In ⚡</span>
+              </button>
+            </form>
+
+            <div class="or-divider">or continue with</div>
+            <div class="social-btns">
+              <button class="social-btn" onclick="socialNotice()">🌐 Google</button>
+              <button class="social-btn" onclick="socialNotice()">📘 Facebook</button>
+              <button class="social-btn" onclick="socialNotice()">📱 Phone OTP</button>
+            </div>
+
+            <div class="switch-row">
+              New to FlashGrocer?
+              <button onclick="switchTab('register')">Create a free account →</button>
+            </div>
+          </div>
+
+          <!-- Trust -->
+          <div class="trust-row">
+            <span class="trust-item">🔒 SSL Encrypted</span>
+            <span class="trust-item">🛡 JWT Secure</span>
+            <span class="trust-item">✅ Privacy Protected</span>
+          </div>
+        </div>
+
+        <!-- ══ REGISTER FORM ══ -->
+        <div id="registerSection" style="display:none">
+          <div class="form-body">
+            <div class="form-header">
+              <span class="form-icon" id="regIcon">🚀</span>
+              <h2 class="form-title">Create Account</h2>
+              <p class="form-subtitle">Join 50K+ FlashGrocer customers</p>
+            </div>
+
+            <div class="err-banner" id="regErr">
+              <span>⚠️</span><span id="regErrMsg"></span>
+            </div>
+
+            <form id="regFormEl" novalidate>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <div class="fg">
+                  <label for="regFirstName">First Name</label>
+                  <div class="input-row">
+                    <span class="i-icon">👤</span>
+                    <input type="text" id="regFirstName" placeholder="Ravi" autocomplete="given-name" required />
+                  </div>
+                  <span class="ferr" id="eRegFirst"></span>
+                </div>
+                <div class="fg">
+                  <label for="regLastName">Last Name</label>
+                  <div class="input-row">
+                    <input type="text" id="regLastName" placeholder="Kumar" autocomplete="family-name" style="padding-left:12px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="fg">
+                <label for="regEmail">Email Address</label>
+                <div class="input-row">
+                  <span class="i-icon">✉️</span>
+                  <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" required />
+                </div>
+                <span class="ferr" id="eRegEmail"></span>
+              </div>
+
+              <div class="fg">
+                <label for="regPhone">Phone Number <span style="font-weight:400;text-transform:none">(optional)</span></label>
+                <div class="input-row">
+                  <span class="i-icon">📞</span>
+                  <input type="tel" id="regPhone" placeholder="+91 98765 43210" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="fg">
+                <label for="regPwd">Password</label>
+                <div class="input-row">
+                  <span class="i-icon">🔑</span>
+                  <input type="password" id="regPwd" placeholder="Min 6 chars, 1 uppercase, 1 digit" autocomplete="new-password" required />
+                  <button type="button" class="eye-btn" id="toggleRegPwd">👁</button>
+                </div>
+                <div class="pwd-meter">
+                  <div class="pwd-bar" id="pb1"></div>
+                  <div class="pwd-bar" id="pb2"></div>
+                  <div class="pwd-bar" id="pb3"></div>
+                </div>
+                <div class="pwd-lbl" id="pwdLbl"></div>
+                <span class="ferr" id="eRegPwd"></span>
+              </div>
+
+              <div class="form-extras" style="justify-content:flex-start;gap:8px">
+                <input type="checkbox" id="agreeTerms" style="width:15px;height:15px;accent-color:var(--silver)" />
+                <label for="agreeTerms" style="font-size:.8rem;color:var(--silver-dark);cursor:pointer">
+                  I agree to the <a href="#" style="color:var(--silver);text-decoration:underline">Terms</a> &amp; <a href="#" style="color:var(--silver);text-decoration:underline">Privacy Policy</a>
+                </label>
+              </div>
+
+              <button type="submit" class="submit-btn" id="regSubmit">
+                <div class="spinner"></div>
+                <span class="btn-text">Create Free Account 🚀</span>
+              </button>
+            </form>
+
+            <div class="switch-row">
+              Already have an account?
+              <button onclick="switchTab('login')">Sign in here →</button>
+            </div>
+          </div>
+
+          <div class="trust-row">
+            <span class="trust-item">🔒 bcrypt Hashed</span>
+            <span class="trust-item">🛡 No Spam</span>
+            <span class="trust-item">✅ Free Forever</span>
+          </div>
+        </div>
+
+        <!-- ══ SUCCESS CARD ══ -->
+        <div class="success-card" id="successCard">
+          <div class="success-icon">✅</div>
+          <h2 id="successTitle">You're In! ⚡</h2>
+          <p id="successMsg">Welcome to FlashGrocer. Redirecting you to the store...</p>
+          <a href="/" class="home-btn" id="goToHome">Go to Store ⚡</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    const API = '/api';
+    let activeTab = 'login';
+
+    /* ── Tab Switching ────────────────────────────────────────── */
+    function switchTab(tab) {
+      activeTab = tab;
+      document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+      document.getElementById('loginSection').style.display    = tab === 'login'    ? 'block' : 'none';
+      document.getElementById('registerSection').style.display = tab === 'register' ? 'block' : 'none';
+      document.getElementById('successCard').classList.remove('show');
+      clearErrors();
+    }
+
+    function clearErrors() {
+      ['loginErr','regErr'].forEach(id => document.getElementById(id).classList.remove('show'));
+      ['eLoginEmail','eLoginPwd','eRegFirst','eRegEmail','eRegPwd'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '';
+      });
+    }
+
+    function showError(bannerId, msgId, msg) {
+      document.getElementById(msgId).textContent = msg;
+      document.getElementById(bannerId).classList.add('show');
+      document.getElementById(bannerId).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function setFieldErr(id, msg) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = msg;
+    }
+
+    /* ── Eye Toggle ───────────────────────────────────────────── */
+    document.getElementById('toggleLoginPwd').addEventListener('click', () => {
+      const inp = document.getElementById('loginPwd');
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+    });
+    document.getElementById('toggleRegPwd').addEventListener('click', () => {
+      const inp = document.getElementById('regPwd');
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+    });
+
+    /* ── Password Strength ────────────────────────────────────── */
+    document.getElementById('regPwd').addEventListener('input', () => {
+      const val = document.getElementById('regPwd').value;
+      const [pb1, pb2, pb3] = [1,2,3].map(n => document.getElementById(`pb${n}`));
+      const lbl = document.getElementById('pwdLbl');
+      [pb1, pb2, pb3].forEach(b => { b.className = 'pwd-bar'; });
+      if (!val) { lbl.textContent = ''; return; }
+      const score = [/.{6,}/, /[A-Z]/, /[0-9]/, /[^A-Za-z0-9]/, /.{10,}/].filter(r => r.test(val)).length;
+      if (score <= 2) {
+        pb1.classList.add('lit-red');
+        lbl.textContent = '⚠️ Weak – add uppercase & digits';
+      } else if (score === 3) {
+        pb1.classList.add('lit-orange'); pb2.classList.add('lit-orange');
+        lbl.textContent = '⚡ Fair – try a special character';
+      } else {
+        pb1.classList.add('lit-green'); pb2.classList.add('lit-green'); pb3.classList.add('lit-green');
+        lbl.textContent = '✅ Strong password!';
+      }
+    });
+
+    /* ── Login Submit ─────────────────────────────────────────── */
+    document.getElementById('loginFormEl').addEventListener('submit', async e => {
+      e.preventDefault();
+      clearErrors();
+
+      const email    = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPwd').value;
+
+      if (!email)    { setFieldErr('eLoginEmail', 'Email is required'); return; }
+      if (!email.includes('@')) { setFieldErr('eLoginEmail', 'Enter a valid email'); return; }
+      if (!password) { setFieldErr('eLoginPwd', 'Password is required'); return; }
+
+      const btn = document.getElementById('loginSubmit');
+      btn.classList.add('loading');
+
+      try {
+        const res  = await fetch(`${API}/auth/login`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          // Save token
+          localStorage.setItem('fg_token', data.accessToken);
+          localStorage.setItem('fg_user',  JSON.stringify(data.user));
+          showSuccess(`Welcome back, ${data.user.name}! ⚡`, 'Redirecting you to the store in 2 seconds...');
+          setTimeout(() => { window.location.href = '/'; }, 1800);
+        } else {
+          showError('loginErr', 'loginErrMsg', data.message || 'Login failed. Please try again.');
+        }
+      } catch (_) {
+        showError('loginErr', 'loginErrMsg', '⚠️ Could not reach the server. Is it running? npm start');
+      }
+
+      btn.classList.remove('loading');
+    });
+
+    /* ── Register Submit ──────────────────────────────────────── */
+    document.getElementById('regFormEl').addEventListener('submit', async e => {
+      e.preventDefault();
+      clearErrors();
+
+      const firstName = document.getElementById('regFirstName').value.trim();
+      const lastName  = document.getElementById('regLastName').value.trim();
+      const email     = document.getElementById('regEmail').value.trim();
+      const phone     = document.getElementById('regPhone').value.trim();
+      const password  = document.getElementById('regPwd').value;
+      const agreed    = document.getElementById('agreeTerms').checked;
+
+      if (!firstName) { setFieldErr('eRegFirst', 'First name is required'); return; }
+      if (!email)     { setFieldErr('eRegEmail', 'Email is required'); return; }
+      if (!email.includes('@')) { setFieldErr('eRegEmail', 'Enter a valid email'); return; }
+      if (!password)  { setFieldErr('eRegPwd', 'Password is required'); return; }
+      if (password.length < 6) { setFieldErr('eRegPwd', 'Min 6 characters'); return; }
+      if (!/[A-Z]/.test(password)) { setFieldErr('eRegPwd', 'Must contain an uppercase letter'); return; }
+      if (!/[0-9]/.test(password)) { setFieldErr('eRegPwd', 'Must contain a digit'); return; }
+      if (!agreed) { showError('regErr', 'regErrMsg', 'Please agree to the Terms & Privacy Policy'); return; }
+
+      const btn = document.getElementById('regSubmit');
+      btn.classList.add('loading');
+
+      const name = [firstName, lastName].filter(Boolean).join(' ');
+
+      try {
+        const res  = await fetch(`${API}/auth/register`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone: phone || undefined, password }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          localStorage.setItem('fg_token', data.accessToken);
+          localStorage.setItem('fg_user',  JSON.stringify(data.user));
+          showSuccess(`Welcome, ${data.user.name}! 🚀`, 'Account created! Taking you to the store...');
+          setTimeout(() => { window.location.href = '/'; }, 2000);
+        } else {
+          const msg = data.errors ? `${data.errors[0].field}: ${data.errors[0].message}` : (data.message || 'Registration failed.');
+          showError('regErr', 'regErrMsg', msg);
+        }
+      } catch (_) {
+        showError('regErr', 'regErrMsg', '⚠️ Could not reach the server. Is it running? Run: node server.js');
+      }
+
+      btn.classList.remove('loading');
+    });
+
+    /* ── Show Success Card ────────────────────────────────────── */
+    function showSuccess(title, msg) {
+      document.getElementById('loginSection').style.display    = 'none';
+      document.getElementById('registerSection').style.display = 'none';
+      document.getElementById('successTitle').textContent = title;
+      document.getElementById('successMsg').textContent   = msg;
+      document.getElementById('successCard').classList.add('show');
+    }
+
+    /* ── Social Placeholder ───────────────────────────────────── */
+    function socialNotice() {
+      alert('Social login coming soon! Please use email for now.');
+    }
+
+    /* ── If already logged in, redirect ──────────────────────── */
+    (async () => {
+      const token = localStorage.getItem('fg_token');
+      if (!token) return;
+      try {
+        const res  = await fetch(`${API}/auth/me`, {
+          headers: { 'Authorization': `Bearer ${token}` },
+          credentials: 'include',
+        });
+        const data = await res.json();
+        if (data.success) {
+          // Already logged in
+          showSuccess(`Welcome back, ${data.user.name}! ⚡`, 'You are already logged in. Redirecting...');
+          setTimeout(() => { window.location.href = '/'; }, 1500);
+          switchTab('login');
+        }
+      } catch(_) { /* not logged in, continue */ }
+    })();
+
+    /* ── Animate login icon ───────────────────────────────────── */
+    setInterval(() => {
+      const icons = ['⚡','🛒','🎁','✅','🔥'];
+      const el = document.getElementById('loginIcon');
+      if (el) {
+        el.style.transform = 'scale(1.2)';
+        setTimeout(() => { el.style.transform = 'scale(1)'; }, 200);
+      }
+    }, 3000);
+  </script>
+</body>
+</html>
